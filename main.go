@@ -30,5 +30,16 @@ func main() {
 	fmt.Printf("First Name: %s\n", firstName)
 	fmt.Printf("Is Employed: %t\n", isEmployed)
 
+	if age > 65 {
+		fmt.Println("Senior Citizen")
+
+	} else if age > 18 {
+		fmt.Println("Adult")
+	}
+
+	for i := 0; i < 19; i++ {
+
+	}
+
 	app.Listen("localhost:9000")
 }
