@@ -1,45 +1,21 @@
 package main
 
 import (
-	"fmt"
-	"github.com/gofiber/fiber/v2"
+	"go-ecommerce-app/config"
 	_ "go-ecommerce-app/config"
+	"go-ecommerce-app/internal/api"
+	"log"
 )
 
 func main() {
 
-	app := fiber.New()
+	cfg, err := config.SetupEnv()
 
-	//Basic Types: int, float64, string, boolean
-	//composite types: array, slice, map, struct
-	//Pointer Types: *
-
-	//var age int
-	//var height float64
-	//var firstName string
-	//var isEmployed bool
-
-	age := 29
-	height := 179.87
-	firstName := "Ola"
-	isEmployed := true
-
-	//fmt.Println(age, height, firstName, isEmployed)
-	fmt.Printf("Age: %d\n", age) //for s
-	fmt.Printf("Height: %f\n", height)
-	fmt.Printf("First Name: %s\n", firstName)
-	fmt.Printf("Is Employed: %t\n", isEmployed)
-
-	if age > 65 {
-		fmt.Println("Senior Citizen")
-
-	} else if age > 18 {
-		fmt.Println("Adult")
-	}
-
-	for i := 0; i < 19; i++ {
+	if err != nil {
+		log.Fatalf("Config file not loaded properly %v\n", err)
 
 	}
 
-	app.Listen("localhost:9000")
+	api.StartServer(cfg)
+
 }
